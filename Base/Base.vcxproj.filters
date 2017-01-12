@@ -1,0 +1,279 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Shader">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\FILES">
+      <UniqueIdentifier>{9aa252bb-ab3e-4cb4-9237-64bc12a30adb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\FILES\Characters">
+      <UniqueIdentifier>{45d71753-9533-45e5-98ca-a9c8aa90c53d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\FILES">
+      <UniqueIdentifier>{10f49707-8d99-498f-85f6-34751207cea3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\FILES\Characters">
+      <UniqueIdentifier>{2c8a3de2-53fd-4f48-bd6c-5dc08912e0eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\FILES\States">
+      <UniqueIdentifier>{d5cc23de-57a2-4a16-aac1-69c0bc80ade6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\FILES\States">
+      <UniqueIdentifier>{692ab59f-2f4e-40df-843b-a67d4e6ec6ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\FILES\Basefiles">
+      <UniqueIdentifier>{0f5546ad-fcff-4a68-9be6-363b3b72c0f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\FILES\Basefiles">
+      <UniqueIdentifier>{d5cd10ee-d6fd-4657-99d8-f4655727064a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Source\Application.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\shader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Mesh.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Camera.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MeshBuilder.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Utility.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\LoadTGA.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\LoadOBJ.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GameObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\SceneBase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\SceneCollision.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\FILES\Archer.cpp">
+      <Filter>Source Files\FILES\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\FILES\Berserker.cpp">
+      <Filter>Source Files\FILES\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\FILES\Knight.cpp">
+      <Filter>Source Files\FILES\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\FILES\Mage.cpp">
+      <Filter>Source Files\FILES\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\FILES\Attack.cpp">
+      <Filter>Source Files\FILES\States</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\FILES\BerserkState.cpp">
+      <Filter>Source Files\FILES\States</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\FILES\BlockState.cpp">
+      <Filter>Source Files\FILES\States</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\FILES\ChargeState.cpp">
+      <Filter>Source Files\FILES\States</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\FILES\Idle.cpp">
+      <Filter>Source Files\FILES\States</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\FILES\MoveTowards.cpp">
+      <Filter>Source Files\FILES\States</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\FILES\Patrol.cpp">
+      <Filter>Source Files\FILES\States</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\FILES\Run.cpp">
+      <Filter>Source Files\FILES\States</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\FILES\Teleport.cpp">
+      <Filter>Source Files\FILES\States</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\FILES\Dead.cpp">
+      <Filter>Source Files\FILES\States</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\FILES\Ally.cpp">
+      <Filter>Source Files\FILES\Basefiles</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\FILES\Character.cpp">
+      <Filter>Source Files\FILES\Basefiles</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\FILES\FileInit.cpp">
+      <Filter>Source Files\FILES\Basefiles</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\FILES\genericEnemy.cpp">
+      <Filter>Source Files\FILES\Basefiles</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\FILES\MessageBoard.cpp">
+      <Filter>Source Files\FILES\Basefiles</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\FILES\States.cpp">
+      <Filter>Source Files\FILES\Basefiles</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\FILES\Enemy.cpp">
+      <Filter>Source Files\FILES\Basefiles</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\FILES\Color.cpp">
+      <Filter>Source Files\FILES\Basefiles</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\FILES\Vector2.cpp">
+      <Filter>Source Files\FILES</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\FILES\Message.cpp">
+      <Filter>Source Files\FILES\Basefiles</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\FILES\MassMessage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Source\Application.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Scene.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Geometry.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\shader.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Camera.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Mesh.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Vertex.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\MeshBuilder.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Light.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Utility.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Material.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\LoadTGA.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\LoadOBJ.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GameObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SceneBase.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SceneCollision.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\FILES\Archer.h">
+      <Filter>Header Files\FILES\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\FILES\Berserker.h">
+      <Filter>Header Files\FILES\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\FILES\Knight.h">
+      <Filter>Header Files\FILES\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\FILES\Mage.h">
+      <Filter>Header Files\FILES\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\FILES\Attack.h">
+      <Filter>Header Files\FILES\States</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\FILES\BerserkState.h">
+      <Filter>Header Files\FILES\States</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\FILES\BlockState.h">
+      <Filter>Header Files\FILES\States</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\FILES\chargestate.h">
+      <Filter>Header Files\FILES\States</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\FILES\Dead.h">
+      <Filter>Header Files\FILES\States</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\FILES\Idle.h">
+      <Filter>Header Files\FILES\States</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\FILES\MoveTowards.h">
+      <Filter>Header Files\FILES\States</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\FILES\Patrol.h">
+      <Filter>Header Files\FILES\States</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\FILES\Run.h">
+      <Filter>Header Files\FILES\States</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\FILES\Teleport.h">
+      <Filter>Header Files\FILES\States</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\FILES\Ally.h">
+      <Filter>Header Files\FILES\Basefiles</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\FILES\Character.h">
+      <Filter>Header Files\FILES\Basefiles</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\FILES\Color.h">
+      <Filter>Header Files\FILES\Basefiles</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\FILES\Enemy.h">
+      <Filter>Header Files\FILES\Basefiles</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\FILES\FileInit.h">
+      <Filter>Header Files\FILES\Basefiles</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\FILES\MessageBoard.h">
+      <Filter>Header Files\FILES\Basefiles</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\FILES\States.h">
+      <Filter>Header Files\FILES\Basefiles</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\FILES\genericEnemy.h">
+      <Filter>Header Files\FILES\Basefiles</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\FILES\Vector2.h">
+      <Filter>Header Files\FILES</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\FILES\Message.h">
+      <Filter>Header Files\FILES\Basefiles</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\FILES\MassMessage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
