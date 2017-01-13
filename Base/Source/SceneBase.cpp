@@ -109,11 +109,11 @@ void SceneBase::Init()
 	meshList[GEO_BACKGROUND]->textureID = LoadTGA("Image//space.tga");
 
 	//QUAD LENGTH MIGHT NEED TO SCALE?
-	meshList[GEO_DETECTIONRING] = MeshBuilder::GenerateQuad("background", Color(1, 1, 1), 1.f);
+	meshList[GEO_DETECTIONRING] = MeshBuilder::GenerateQuad("background", Color(1, 1, 1), 2.f);
 	meshList[GEO_DETECTIONRING]->textureID = LoadTGA("Image//ring.tga");
 
 	//QUAD LENGTH MIGHT NEED TO SCALE?
-	meshList[GEO_ATTACKRING] = MeshBuilder::GenerateQuad("background", Color(1, 1, 1), 1.f);
+	meshList[GEO_ATTACKRING] = MeshBuilder::GenerateQuad("background", Color(1, 1, 1), 2.f);
 	meshList[GEO_ATTACKRING]->textureID = LoadTGA("Image//ring2.tga");
 
 	meshList[GEO_HP_BAR] = MeshBuilder::GenerateQuad("HP", Color(0, 1, 0), 1.f);
