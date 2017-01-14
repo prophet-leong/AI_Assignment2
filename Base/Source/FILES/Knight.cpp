@@ -33,6 +33,8 @@ Knight::Knight(Vector2 Position, int health, float moveSpeed, int attack, string
 }
 void Knight::Update(double dt)
 {
+	if (isDead)
+		return;
 	//just a backup check
 	if (CurrentState != 0)
 		CurrentState->update(dt, this, this->TargetedOpponent);
@@ -90,6 +92,7 @@ void Knight::UpdateFSM()
 		}
 		this->health = 0;
 		isDead = true;
+		SetState(new Dead());
 	}
 	else if (this->health < maxHealth*0.3f && CurrentState->stateName != "BLOCKSTATE" && CurrentState->stateName != "CHARGESTATE")
 	{

@@ -53,6 +53,7 @@ GameObject* SceneCollision::FetchGO()
 }
 
 Vector2 TargetedLocation(0, 0);
+static float fps;
 
 void SceneCollision::Update(double dt)
 {
@@ -102,7 +103,9 @@ void SceneCollision::Update(double dt)
 		MessageBoard::GetInstance()->ClearAllEnemies();
 	}
 	MessageBoard::GetInstance()->UpdateAI(dt);
+	fps = 1/dt;
 }
+
 
 void SceneCollision::RenderGO(Character *go)
 {
@@ -137,7 +140,6 @@ void SceneCollision::RenderGO(Character *go)
 
 	modelStack.PopMatrix();
 }
-
 void SceneCollision::Render()
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -174,7 +176,7 @@ void SceneCollision::Render()
 	for (unsigned int i = 0; i < MessageBoard::GetInstance()->GetEnemyVector().size(); ++i)
 	{
 		Enemy* enemy = MessageBoard::GetInstance()->GetEnemy(i);
-		if (enemy)
+		if (!enemy->GetIsDead())
 		{
 			modelStack.PushMatrix();
 			modelStack.Translate(0, 0, depth);
@@ -183,6 +185,10 @@ void SceneCollision::Render()
 		}
 		depth += 0.01f;
 	}
+	modelStack.PushMatrix();
+	modelStack.Translate(0, 3.f, 1.f);
+	RenderText(meshList[GEO_TEXT],std::to_string(fps), Color(0.5f, 0.5f, 0.5f));
+	modelStack.PopMatrix();
 }
 
 void SceneCollision::Exit()

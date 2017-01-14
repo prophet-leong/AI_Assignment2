@@ -33,6 +33,8 @@ Mage::~Mage()
 
 void Mage::Update(double dt)
 {
+	if (isDead)
+		return;
 	//just a backup check
 	if (CurrentState != 0)
 		CurrentState->update(dt, this, this->TargetedOpponent);
@@ -87,6 +89,7 @@ void Mage::UpdateFSM()
 		}
 		this->health = 0;
 		isDead = true;
+		SetState(new Dead());
 	}
 	else if (TargetedOpponent != NULL && (CurrentState->stateName == "IDLE") && (lengthBetweenEnemy < attackRange))
 	{

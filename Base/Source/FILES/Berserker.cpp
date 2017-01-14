@@ -30,6 +30,8 @@ Berserker::Berserker(Vector2 Position, int health, float moveSpeed, int attack, 
 
 void Berserker::Update(double dt)
 {
+	if (isDead)
+		return;
 	//just a backup check
 	if (CurrentState != 0)
 		CurrentState->update(dt, this,this->TargetedOpponent);
@@ -95,6 +97,7 @@ void Berserker::UpdateFSM()
 		}
 		this->health = 0;
 		isDead = true;
+		SetState(new Dead());
 	}
 	else if (this->health < maxHealth * 0.5f)
 	{

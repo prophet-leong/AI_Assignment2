@@ -62,6 +62,7 @@ void Ally::UpdateFSM()
 		health = 0;
 		State *dead = new Dead();
 		SetState(dead);
+		isDead = true;
 	}
 	else if (currentState->stateName == "PATROL" && TargetedOpponent != 0)
 	{

@@ -3,7 +3,7 @@
 #include "Berserker.h"
 #include "Mage.h"
 #include "Knight.h"
-
+#include <iostream>
 MessageBoard* MessageBoard::mb = new MessageBoard();
 MessageBoard::MessageBoard()
 {
@@ -32,25 +32,28 @@ void MessageBoard::UpdateAI(double dt)
 {
 	for (unsigned int i = 0; i < enemies.size(); ++i)
 	{
-		if (enemies[i])
+		if (!enemies[i]->GetIsDead())
 		{
 			enemies[i]->Update(dt);
 			enemies[i]->UpdateFSM();
 			for (unsigned int a = 0; a < Allies.size(); ++a)
 			{
-				if (enemies[i])
+				if (!Allies[a]->GetIsDead())
 				enemies[i]->SetTarget(Allies[a]);
 			}
 		}
 	}
 	for (unsigned int i = 0; i < Allies.size(); ++i)
 	{
-		Allies[i]->Update(dt);
-		Allies[i]->UpdateFSM();
-		for (unsigned int a = 0; a <enemies.size(); ++a)
+		if (!Allies[i]->GetIsDead())
 		{
-			if (enemies[a] != NULL)
-				Allies[i]->SetTarget(enemies[a]);
+			Allies[i]->Update(dt);
+			Allies[i]->UpdateFSM();
+			for (unsigned int a = 0; a <enemies.size(); ++a)
+			{
+				if (!enemies[a]->GetIsDead())
+					Allies[i]->SetTarget(enemies[a]);
+			}
 		}
 	}
 }
@@ -151,8 +154,9 @@ void MessageBoard::AddEnemy(Enemy* enemy)
 {
 	for (unsigned int i = 0; i < enemies.size(); ++i)
 	{
-		if (enemies[i] == NULL)
+		if (enemies[i]->GetIsDead())
 		{
+			delete enemies[i];
 			enemies[i] = enemy;
 			EnemiesAlive++;
 			return;
@@ -162,23 +166,24 @@ void MessageBoard::AddEnemy(Enemy* enemy)
 }
 void MessageBoard::RemoveEnemy(Enemy*enemy)
 {
-	for (unsigned int i = 0; i < enemies.size(); ++i)
-	{
-		if (enemies[i] == enemy)
-		{
-			enemies[i] = NULL;
-			EnemiesAlive--;
-			delete enemy;
-			return;
-		}
-	}
+	//for (unsigned int i = 0; i < enemies.size(); ++i)
+	//{
+	//	if (enemies[i] == enemy)
+	//	{
+	//		enemies[i] = NULL;
+	//		EnemiesAlive--;
+	//		delete enemy;
+	//		return;
+	//	}
+	//}
 }
 void MessageBoard::AddAlly(Ally* ally)
 {
 	for (unsigned int i = 0; i < Allies.size(); ++i)
 	{
-		if (Allies[i] == NULL)
+		if (Allies[i]->GetIsDead() == true)
 		{
+			delete Allies[i];
 			Allies[i] = ally;
 			return;
 		}
