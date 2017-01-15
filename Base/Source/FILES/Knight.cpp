@@ -31,6 +31,25 @@ Knight::Knight(Vector2 Position, int health, float moveSpeed, int attack, string
 	messages = NULL;
 	pendingRequest = false;
 }
+Knight::Knight(Knight* others)
+{
+	this->Position = others->Position;
+	this->health = others->health;
+	this->moveSpeed = others->moveSpeed;
+	this->attack = others->attack;
+	this->attacksPerSecond = others->attacksPerSecond;
+	this->Name = others->Name;
+	this->attackRange = others->attackRange;
+	this->detectionRange = others->detectionRange;
+	this->color = others->color;
+	this->CurrentState = new Idle();
+	this->maxHealth = others->maxHealth;
+	this->BlockDuration = others->BlockDuration;
+	this->Ticks = others->Ticks;
+	this->isDead = false;
+	messages = NULL;
+	pendingRequest = false;
+}
 void Knight::Update(double dt)
 {
 	if (isDead)

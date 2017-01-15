@@ -50,6 +50,7 @@ public:
 		GEO_ATTACKRING,
 		GEO_HP_BAR,
 		GEO_BACKGROUND,
+		GEO_ALLY,
 		NUM_GEOMETRY,
 	};
 public:

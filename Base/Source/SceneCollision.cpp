@@ -107,12 +107,14 @@ void SceneCollision::Update(double dt)
 }
 
 
-void SceneCollision::RenderGO(Character *go)
+void SceneCollision::RenderGO(Character *go,bool isAlly)
 {
 	modelStack.PushMatrix();
 		modelStack.Translate(go->Position.x, go->Position.y, 0.f);
-		RenderMesh(meshList[GEO_BALL], false);
-
+		if (!isAlly)
+			RenderMesh(meshList[GEO_BALL], false);
+		else
+			RenderMesh(meshList[GEO_ALLY], false);
 		modelStack.PushMatrix();
 			//might need to scale here?
 			modelStack.PushMatrix();
@@ -163,12 +165,12 @@ void SceneCollision::Render()
 	float depth = 0.f;
 	for (unsigned int i = 0; i < MessageBoard::GetInstance()->GetAllyVector().size(); ++i)
 	{
-		Ally* ally = MessageBoard::GetInstance()->GetAlly(i);
+		Character* ally = MessageBoard::GetInstance()->GetAlly(i);
 		if (!ally->GetIsDead())
 		{
 			modelStack.PushMatrix();
 			modelStack.Translate(0, 0, depth);
-			RenderGO(ally);
+			RenderGO(ally,true);
 			modelStack.PopMatrix();
 		}
 		depth += 0.01f;
@@ -180,7 +182,7 @@ void SceneCollision::Render()
 		{
 			modelStack.PushMatrix();
 			modelStack.Translate(0, 0, depth);
-			RenderGO(enemy);
+			RenderGO(enemy,false);
 			modelStack.PopMatrix();
 		}
 		depth += 0.01f;

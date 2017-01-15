@@ -6,6 +6,7 @@ class Archer:public Enemy
 public:
 	Archer();
 	Archer(Vector2 Position, int health, float moveSpeed, int attack, float attacksPerSecond, string Name,float ShootingRange,Color color);
+	Archer(Archer* other);
 	~Archer();
 	void setRun(bool q);
 	void UpdateFSM();

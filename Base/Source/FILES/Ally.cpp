@@ -4,6 +4,7 @@
 #include "MoveTowards.h"
 #include "Attack.h"
 #include "MessageBoard.h"
+#include "Bribe.h"
 Ally::Ally()
 {
 	counter = 0;
@@ -71,8 +72,10 @@ void Ally::UpdateFSM()
 	}
 	else if ((currentState->stateName == "MOVETOWARDS") && (lengthBetweenEnemy < attackRange * 0.8f))
 	{
-		State *attack = new Attack();
-		SetState(attack);
+		if (rand() % 2 == 0)
+			SetState(new Bribe());
+		else
+			SetState(new Attack());
 	}
 	else if ((currentState->stateName == "ATTACK") && (lengthBetweenEnemy > attackRange))
 	{

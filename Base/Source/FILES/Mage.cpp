@@ -26,6 +26,23 @@ Mage::Mage(Vector2 Position, int health, float moveSpeed, int attack, float atta
 	messages = NULL;
 	pendingRequest = false;
 }
+Mage::Mage(Mage*others)
+{
+	this->Position = others->Position;
+	this->health = others->health;
+	this->moveSpeed = others->moveSpeed;
+	this->attack = others->attack;
+	this->attacksPerSecond = others->attacksPerSecond;
+	this->Name = others->Name;
+	this->attackRange = others->attackRange;
+	this->detectionRange = others->detectionRange;
+	this->color = others->color;
+	this->CurrentState = new Idle();
+	this->maxHealth = others->maxHealth;
+	this->teleport = others->teleport;
+	messages = NULL;
+	pendingRequest = false;
+}
 Mage::~Mage()
 {
 	Exit();

@@ -105,6 +105,8 @@ void SceneBase::Init()
 	meshList[GEO_BALL] = MeshBuilder::GenerateQuad("ball", Color(0, 1, 1), 1.f);
 	meshList[GEO_BALL]->textureID = LoadTGA("Image//ball.tga");
 
+	meshList[GEO_ALLY] = MeshBuilder::GenerateQuad("ball", Color(0, 1, 0), 1.f);
+
 	meshList[GEO_BACKGROUND] = MeshBuilder::GenerateQuad("background", Color(1, 1, 1), 1.f);
 	meshList[GEO_BACKGROUND]->textureID = LoadTGA("Image//space.tga");
 

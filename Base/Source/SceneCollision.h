@@ -17,7 +17,7 @@ public:
 	virtual void Render();
 	virtual void Exit();
 
-	void RenderGO(Character *go);
+	void RenderGO(Character *go,bool isAlly);
 	GameObject* FetchGO();
 
 protected:

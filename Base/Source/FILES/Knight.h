@@ -6,6 +6,7 @@ public:
 	Knight();
 	Knight(Vector2 Position, int health, float moveSpeed, int attack, string Name, float attackRange, float attacksPerSecond, 
 		float detectionRange,float BlockDuration,int HealthHealed,Color color);
+	Knight(Knight* other);
 	~Knight();
 	virtual void Update(double dt);
 	virtual void UpdateFSM();

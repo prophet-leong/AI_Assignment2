@@ -27,7 +27,23 @@ Berserker::Berserker(Vector2 Position, int health, float moveSpeed, int attack, 
 	this->CurrentState = (rand() % 2 == 0 ? (State*)(new Idle()) : new BerserkState());
 
 }
-
+Berserker::Berserker(Berserker*other)
+{
+	this->Position = other->Position;
+	this->health = other->health;
+	this->moveSpeed = other->moveSpeed;
+	this->attack = other->attack;
+	this->attackRange = other->attackRange;
+	this->attacksPerSecond = other->attacksPerSecond;
+	this->detectionRange = other->detectionRange;
+	this->Name = other->Name;
+	this->color = other->color;
+	this->isDead = false;
+	maxHealth = other->maxHealth;
+	messages = NULL;
+	pendingRequest = false;
+	this->CurrentState = (rand() % 2 == 0 ? (State*)(new Idle()) : new BerserkState());
+}
 void Berserker::Update(double dt)
 {
 	if (isDead)

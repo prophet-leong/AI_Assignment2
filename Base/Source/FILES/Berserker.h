@@ -5,6 +5,7 @@ class Berserker:public Enemy
 public:
 	Berserker();
 	Berserker(Vector2 Position, int health, float moveSpeed, int attack, string Name, float attackRange, float attacksPerSecond, float detectionRange,Color color);
+	Berserker(Berserker*other);
 	~Berserker();
 	
 	virtual void Update(double dt);

@@ -17,19 +17,19 @@ public:
 	Message* GetMessageFrom(Character* Sender);
 	void AddEnemy(Enemy* enemy);
 	void RemoveEnemy(Enemy*enemy);
-	void AddAlly(Ally* ally);
-	void RemoveAlly(Ally*ally);
+	void AddAlly(Character* ally);
+	void RemoveAlly(Character*ally);
 	void UpdateAI(double dt);
 	Enemy* GetEnemy(int i);
 	vector<Enemy*> GetEnemyVector();
-	Ally* GetAlly(int i);
-	vector<Ally*> GetAllyVector();
+	Character* GetAlly(int i);
+	vector<Character*> GetAllyVector();
 	int GetEnemiesAlive();
 	void ClearAllEnemies();
 	void ClearAllAllies();
 protected:
 	int EnemiesAlive;
-	vector<Ally*>Allies;
+	vector<Character*>Allies;
 	vector<Enemy*>enemies;
 	vector<Message*>messages;
 private:
