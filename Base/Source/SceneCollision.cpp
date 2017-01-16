@@ -22,11 +22,13 @@ SceneCollision::~SceneCollision()
 
 void SceneCollision::Init()
 {
+	srand(time(NULL));
 	SceneBase::Init();
 	MessageBoard::GetInstance()->AddEnemy(new Berserker(Vector2(5.f, 0), 10, 2, 1, "Berserker", 1.5f, 1, 3.0f, Color(0.5f, 0.0f, 0.0f)));
 	MessageBoard::GetInstance()->AddEnemy(new Knight(Vector2(-5.f, 0), 20, 2, 1, "Knight", 1.5f, 1, 3.0f, 2.0f, 7, Color(0.5f, 0.5f, 0.0f)));
 	MessageBoard::GetInstance()->AddEnemy(new Archer(Vector2(0, 5.f), 10, 1, 1, 1, "Archer", 4, Color(0.5f, 0.0f, 0.5f)));
 	MessageBoard::GetInstance()->AddEnemy(new Mage(Vector2(0, -5.f), 10, 2, 1, 1, "Mage", 5, Color(0.0f, 0.0f, 0.8f)));
+
 	MessageBoard::GetInstance()->AddAlly(new Ally(Vector2(0, 0), 20, 4, 2, "Hero", 1.5f, 1.5f, 6.0f, Color(0.0f, 0.8f, 0.0f)));
 }
 
@@ -102,8 +104,8 @@ void SceneCollision::Update(double dt)
 		MessageBoard::GetInstance()->ClearAllAllies();
 		MessageBoard::GetInstance()->ClearAllEnemies();
 	}
-	MessageBoard::GetInstance()->UpdateAI(dt);
 	fps = 1/dt;
+	MessageBoard::GetInstance()->UpdateAI(dt);
 }
 
 

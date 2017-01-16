@@ -48,6 +48,11 @@ void Berserker::Update(double dt)
 {
 	if (isDead)
 		return;
+	if (TargetedOpponent == NULL)
+	{
+		SetState(new Idle);
+		return;
+	}
 	//just a backup check
 	if (CurrentState != 0)
 		CurrentState->update(dt, this,this->TargetedOpponent);
@@ -106,14 +111,11 @@ void Berserker::UpdateFSM()
 	}
 	if (this->health <= 0)
 	{
-		if (isDead)
-		{
-			MessageBoard::GetInstance()->RemoveEnemy(this);
-			return;
-		}
 		this->health = 0;
 		isDead = true;
+		MessageBoard::GetInstance()->EnemiesAlive--;
 		SetState(new Dead());
+		return;
 	}
 	else if (this->health < maxHealth * 0.5f)
 	{

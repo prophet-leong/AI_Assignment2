@@ -38,8 +38,8 @@ void MessageBoard::UpdateAI(double dt)
 			enemies[i]->UpdateFSM();
 			for (unsigned int a = 0; a < Allies.size(); ++a)
 			{
-				if (!Allies[a]->GetIsDead())
-				enemies[i]->SetTarget(Allies[a]);
+				if (enemies[i]->SetTarget(Allies[a]))
+					break;
 			}
 		}
 	}
@@ -51,8 +51,8 @@ void MessageBoard::UpdateAI(double dt)
 			Allies[i]->UpdateFSM();
 			for (unsigned int a = 0; a <enemies.size(); ++a)
 			{
-				if (!enemies[a]->GetIsDead())
-					Allies[i]->SetTarget(enemies[a]);
+				if (Allies[i]->SetTarget(enemies[a]))
+					break;
 			}
 		}
 	}
@@ -152,14 +152,17 @@ Message* MessageBoard::GetMessageFrom(Character* Sender)
 }
 void MessageBoard::AddEnemy(Enemy* enemy)
 {
-	for (unsigned int i = 0; i < enemies.size(); ++i)
+	if (enemies.size() > EnemiesAlive+1)
 	{
-		if (enemies[i]->GetIsDead())
+		for (unsigned int i = 0; i < enemies.size(); ++i)
 		{
-			delete enemies[i];
-			enemies[i] = enemy;
-			EnemiesAlive++;
-			return;
+			if (enemies[i]->GetIsDead())
+			{
+				delete enemies[i];
+				enemies[i] = enemy;
+				EnemiesAlive++;
+				return;
+			}
 		}
 	}
 	enemies.push_back(enemy);

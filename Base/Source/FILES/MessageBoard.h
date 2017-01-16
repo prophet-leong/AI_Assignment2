@@ -27,8 +27,8 @@ public:
 	int GetEnemiesAlive();
 	void ClearAllEnemies();
 	void ClearAllAllies();
-protected:
 	int EnemiesAlive;
+protected:
 	vector<Character*>Allies;
 	vector<Enemy*>enemies;
 	vector<Message*>messages;

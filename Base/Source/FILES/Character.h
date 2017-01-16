@@ -26,7 +26,7 @@ public:
 	float GetDetectionRange();
 	void SetAttackingRange(float newRange);
 	float GetAttackingRange();
-	virtual void SetTarget(Character*Opponent){};
+	virtual bool SetTarget(Character*Opponent){ return true; };
 	//****************************************************************************//
 protected:
 	//range of dectection

@@ -16,12 +16,22 @@ string Enemy::PrintStateName()
 	return CurrentState->stateName;
 }
 //setters and getters
-void Enemy::SetTarget(Character*Opponent)
+bool Enemy::SetTarget(Character*Opponent)
 {
-	if (Opponent->GetIsDead() == false && (Opponent->Position - this->Position).Length() < detectionRange)
+	if (!TargetedOpponent|| TargetedOpponent->GetIsDead())
 	{
-		TargetedOpponent = Opponent;
+		if (Opponent->GetIsDead())
+		{
+			return false;
+		}
+		if ((Opponent->Position - this->Position).Length() < detectionRange)
+		{
+			TargetedOpponent = Opponent;
+			return true;
+		}
+		return false;
 	}
+	return true;
 }
 void Enemy::SetMessage(Message* messsages)
 {

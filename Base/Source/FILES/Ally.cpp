@@ -83,15 +83,22 @@ void Ally::UpdateFSM()
 		SetState(moveto);
 	}
 }
-void Ally::SetTarget(Character *Opponent)
+bool Ally::SetTarget(Character *Opponent)
 {
-	if (TargetedOpponent == 0)
+	if (TargetedOpponent == NULL || TargetedOpponent->GetIsDead())
 	{
-		if (Opponent && (Opponent->Position - this->Position).Length() < detectionRange)
+		if (Opponent->GetIsDead())
+		{
+			return false;
+		}
+		if ((Opponent->Position - Position).Length() < detectionRange)
 		{
 			TargetedOpponent = Opponent;
+			return true;
 		}
+		return false;
 	}
+	return true;
 }
 void Ally::SetState(State* newState)
 {

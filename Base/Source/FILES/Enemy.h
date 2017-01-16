@@ -12,7 +12,7 @@ public:
 	void SetState(State* newState);
 	string PrintStateName();
 	//setters and getters for the variables
-	virtual void SetTarget(Character*Opponent);
+	virtual bool SetTarget(Character*Opponent);
 	virtual void SetMessage(Message* messsages);
 	virtual Message* GetMessage();
 	virtual void UpdateMessage(){};

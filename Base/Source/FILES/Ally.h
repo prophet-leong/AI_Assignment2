@@ -10,7 +10,7 @@ public:
 	Ally(Vector2 Position, int health, float moveSpeed, int attack, string Name, float attackRange, float attacksPerSecond, float detectionRange, Color color);
 	virtual ~Ally();
 	virtual void SetState(State* newState);
-	virtual void SetTarget(Character*Opponent);
+	virtual bool SetTarget(Character*Opponent);
 	virtual void Update(double dt);
 	virtual void UpdateFSM();
 	vector<Vector2*>WayPoints;
