@@ -89,7 +89,7 @@ void Application::Init()
 
 
 	//Create a window and create its OpenGL context
-	m_width = 640;
+	m_width = 1280;
 	m_height = 640;
 	m_window = glfwCreateWindow(m_width, m_height, "Physics", NULL, NULL);
 

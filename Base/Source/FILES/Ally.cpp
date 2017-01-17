@@ -14,10 +14,10 @@ Ally::Ally(Vector2 Position, int health, float moveSpeed, int attack, string Nam
 {
 	//TODO
 	//change this to be able to set in a file
-	WayPoints.push_back(new Vector2(5, -5));
+	WayPoints.push_back(new Vector2(15, -5));
+	WayPoints.push_back(new Vector2(15, 5));
 	WayPoints.push_back(new Vector2(5, 5));
-	WayPoints.push_back(new Vector2(-5, 5));
-	WayPoints.push_back(new Vector2(-5, -5));
+	WayPoints.push_back(new Vector2(5, -5));
 	counter = 0;
 	TargetedOpponent = 0;
 	currentState = new Patrol();

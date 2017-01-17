@@ -17,9 +17,14 @@ MessageBoard::~MessageBoard()
 {
 }
 
+vector<Message*>* MessageBoard::getMessageVector()
+{
+	return &messages;
+}
+
 void MessageBoard::getMessage()
 {
-	for (int i = 0; i < messages.size(); ++i)
+	for (unsigned int i = 0; i < messages.size(); ++i)
 	{
 		if (messages[i] != NULL)
 			cout << messages[i]->printMessage() << endl;
@@ -118,7 +123,7 @@ void MessageBoard::SendMessageTo(Message* message)
 	{
 		for (unsigned int i = 0; i < enemies.size(); ++i)
 		{
-			if (enemies[i] && enemies[i]->printInfo() == name)
+			if (enemies[i] && enemies[i]->printName() == name)
 			{
 				if (enemies[i]->GetMessage() == NULL)
 				{

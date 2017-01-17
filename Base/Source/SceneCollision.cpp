@@ -24,12 +24,12 @@ void SceneCollision::Init()
 {
 	srand((unsigned)time(NULL));
 	SceneBase::Init();
-	MessageBoard::GetInstance()->AddEnemy(new Berserker(Vector2(5.f, 0), 10, 2, 1, "Berserker", 1.5f, 1, 3.0f, Color(0.5f, 0.0f, 0.0f)));
-	MessageBoard::GetInstance()->AddEnemy(new Knight(Vector2(-5.f, 0), 20, 2, 1, "Knight", 1.5f, 1, 3.0f, 2.0f, 7, Color(0.5f, 0.5f, 0.0f)));
-	MessageBoard::GetInstance()->AddEnemy(new Archer(Vector2(0, 5.f), 10, 1, 1, 1, "Archer", 4, Color(0.5f, 0.0f, 0.5f)));
-	MessageBoard::GetInstance()->AddEnemy(new Mage(Vector2(0, -5.f), 10, 2, 1, 1, "Mage", 5, Color(0.0f, 0.0f, 0.8f)));
+	MessageBoard::GetInstance()->AddEnemy(new Berserker(Vector2(15.f, 0), 10, 2, 1, "Berserker", 1.5f, 1, 3.0f, Color(0.5f, 0.0f, 0.0f)));
+	MessageBoard::GetInstance()->AddEnemy(new Knight(Vector2(5.f, 0), 20, 2, 1, "Knight", 1.5f, 1, 3.0f, 2.0f, 7, Color(0.5f, 0.5f, 0.0f)));
+	MessageBoard::GetInstance()->AddEnemy(new Archer(Vector2(10, 5.f), 10, 1, 1, 1, "Archer", 4, Color(0.5f, 0.0f, 0.5f)));
+	MessageBoard::GetInstance()->AddEnemy(new Mage(Vector2(10, -5.f), 10, 2, 1, 1, "Mage", 5, Color(0.0f, 0.0f, 0.8f)));
 
-	MessageBoard::GetInstance()->AddAlly(new Ally(Vector2(-4.f, 0), 20, 4, 2, "Hero", 1.5f, 1.5f, 6.0f, Color(0.0f, 0.8f, 0.0f)));
+	MessageBoard::GetInstance()->AddAlly(new Ally(Vector2(4.f, 0), 20, 4, 2, "Hero", 1.5f, 1.5f, 6.0f, Color(0.0f, 0.8f, 0.0f)));
 }
 
 GameObject* SceneCollision::FetchGO()
@@ -54,7 +54,7 @@ GameObject* SceneCollision::FetchGO()
 	return newgo;
 }
 
-Vector2 TargetedLocation(0, 0);
+Vector2 TargetedLocation(10, 0);
 static float fps;
 
 void SceneCollision::Update(double dt)
@@ -164,7 +164,7 @@ void SceneCollision::Render()
 	// Projection matrix : Orthographic Projection
 	//we test 10 x 10
 	Mtx44 projection;
-	projection.SetToOrtho(-10, 10, -10, 10, -10, 10);
+	projection.SetToOrtho(-20, 20, -10, 10, -10, 10);
 	projectionStack.LoadMatrix(projection);
 	
 	// Camera matrix
@@ -202,6 +202,17 @@ void SceneCollision::Render()
 	modelStack.Translate(0, 3.f, 1.f);
 	RenderText(meshList[GEO_TEXT],std::to_string(fps), Color(0.5f, 0.5f, 0.5f));
 	modelStack.PopMatrix();
+	vector<Message*>* msg = MessageBoard::GetInstance()->getMessageVector();
+	for (unsigned int i = 0; i < msg->size(); ++i)
+	{
+		if (msg->at(i))
+		{
+			modelStack.PushMatrix();
+			modelStack.Translate(-15.f, 9.f - i, 1.f);
+			RenderText(meshList[GEO_TEXT], msg->at(i)->printMessage(), Color(0.5f, 0.5f, 0.5f));
+			modelStack.PopMatrix();
+		}
+	}
 }
 
 void SceneCollision::Exit()
