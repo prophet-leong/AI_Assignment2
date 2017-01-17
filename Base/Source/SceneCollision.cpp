@@ -29,7 +29,7 @@ void SceneCollision::Init()
 	MessageBoard::GetInstance()->AddEnemy(new Archer(Vector2(0, 5.f), 10, 1, 1, 1, "Archer", 4, Color(0.5f, 0.0f, 0.5f)));
 	MessageBoard::GetInstance()->AddEnemy(new Mage(Vector2(0, -5.f), 10, 2, 1, 1, "Mage", 5, Color(0.0f, 0.0f, 0.8f)));
 
-	MessageBoard::GetInstance()->AddAlly(new Ally(Vector2(0, 0), 20, 4, 2, "Hero", 1.5f, 1.5f, 6.0f, Color(0.0f, 0.8f, 0.0f)));
+	MessageBoard::GetInstance()->AddAlly(new Ally(Vector2(-4.f, 0), 20, 4, 2, "Hero", 1.5f, 1.5f, 6.0f, Color(0.0f, 0.8f, 0.0f)));
 }
 
 GameObject* SceneCollision::FetchGO()
