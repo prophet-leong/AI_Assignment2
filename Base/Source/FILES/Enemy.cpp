@@ -71,6 +71,14 @@ void Enemy::Exit()
 		}
 	}
 }
+
+string Enemy::printInfo()
+{
+	string temp = Name;
+	if (CurrentState)
+		temp += ":" + CurrentState->stateName;
+	return temp;
+}
 Enemy::~Enemy()
 {
 }

@@ -150,6 +150,9 @@
     <ClCompile Include="Source\FILES\MassMessage.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Source\FILES\Bribe.cpp">
+      <Filter>Source Files\FILES</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Application.h">
@@ -274,6 +277,9 @@
     </ClInclude>
     <ClInclude Include="Source\FILES\MassMessage.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\FILES\Bribe.h">
+      <Filter>Header Files\FILES</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

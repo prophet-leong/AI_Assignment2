@@ -16,6 +16,7 @@ public:
 	virtual void SetMessage(Message* messsages);
 	virtual Message* GetMessage();
 	virtual void UpdateMessage(){};
+	virtual string printInfo();
 	bool pendingRequest;
 	void Exit();
 protected:

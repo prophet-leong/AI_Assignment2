@@ -19,6 +19,7 @@
     <ClCompile Include="Source\FILES\Berserker.cpp" />
     <ClCompile Include="Source\FILES\BerserkState.cpp" />
     <ClCompile Include="Source\FILES\BlockState.cpp" />
+    <ClCompile Include="Source\FILES\Bribe.cpp" />
     <ClCompile Include="Source\FILES\Character.cpp" />
     <ClCompile Include="Source\FILES\ChargeState.cpp" />
     <ClCompile Include="Source\FILES\Color.cpp" />
@@ -58,6 +59,7 @@
     <ClInclude Include="Source\FILES\Berserker.h" />
     <ClInclude Include="Source\FILES\BerserkState.h" />
     <ClInclude Include="Source\FILES\BlockState.h" />
+    <ClInclude Include="Source\FILES\Bribe.h" />
     <ClInclude Include="Source\FILES\Character.h" />
     <ClInclude Include="Source\FILES\chargestate.h" />
     <ClInclude Include="Source\FILES\Color.h" />

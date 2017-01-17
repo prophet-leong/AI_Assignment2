@@ -15,6 +15,7 @@ public:
 	void RemoveMessage(Message* oldMessage);
 	void SendMessageTo(Message* message);
 	Message* GetMessageFrom(Character* Sender);
+	void getMessage();
 	void AddEnemy(Enemy* enemy);
 	void RemoveEnemy(Enemy*enemy);
 	void AddAlly(Character* ally);

@@ -4,6 +4,8 @@
 #include "Mage.h"
 #include "Knight.h"
 #include <iostream>
+using std::cout;
+using std::endl;
 MessageBoard* MessageBoard::mb = new MessageBoard();
 MessageBoard::MessageBoard()
 {
@@ -14,6 +16,16 @@ MessageBoard::MessageBoard()
 MessageBoard::~MessageBoard()
 {
 }
+
+void MessageBoard::getMessage()
+{
+	for (int i = 0; i < messages.size(); ++i)
+	{
+		if (messages[i] != NULL)
+			cout << messages[i]->printMessage() << endl;
+	}
+}
+
 MessageBoard* MessageBoard::GetInstance()
 {
 	if (!mb)
@@ -66,11 +78,13 @@ void MessageBoard::WriteToMessageBoard(Message * newMessage)
 		{
 			messages[i] = newMessage;
 			SendMessageTo(newMessage);
+			getMessage();
 			return;
 		}
 	}
 	messages.push_back(newMessage);
 	SendMessageTo(newMessage);
+	getMessage();
 }
 void MessageBoard::SendMessageTo(Message* message)
 {
@@ -104,7 +118,7 @@ void MessageBoard::SendMessageTo(Message* message)
 	{
 		for (unsigned int i = 0; i < enemies.size(); ++i)
 		{
-			if (enemies[i] && enemies[i]->KIMINONAWA() == name)
+			if (enemies[i] && enemies[i]->printInfo() == name)
 			{
 				if (enemies[i]->GetMessage() == NULL)
 				{
@@ -113,9 +127,7 @@ void MessageBoard::SendMessageTo(Message* message)
 				}
 			}
 		}
-		RemoveMessage(message);
 	}
-
 }
 void MessageBoard::RemoveMessage(Message* oldMessage)
 {
@@ -152,7 +164,7 @@ Message* MessageBoard::GetMessageFrom(Character* Sender)
 }
 void MessageBoard::AddEnemy(Enemy* enemy)
 {
-	if (enemies.size() > EnemiesAlive+1)
+	if (enemies.size() > (unsigned)(EnemiesAlive + 1))
 	{
 		for (unsigned int i = 0; i < enemies.size(); ++i)
 		{

@@ -20,6 +20,7 @@ public:
 	virtual ~Message();
 
 	MESSAGE_TYPE message;
+	string printMessage();
 	AI_TYPES to;
 	Character* from;
 private:

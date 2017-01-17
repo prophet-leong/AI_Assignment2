@@ -72,7 +72,7 @@ void Ally::UpdateFSM()
 	}
 	else if ((currentState->stateName == "MOVETOWARDS") && (lengthBetweenEnemy < attackRange * 0.8f))
 	{
-		if (rand() % 2 == 0)
+		if (rand() % 10 == 0)
 			SetState(new Bribe());
 		else
 			SetState(new Attack());

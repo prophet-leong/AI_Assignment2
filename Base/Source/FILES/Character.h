@@ -21,7 +21,8 @@ public:
 	//**************************Setters and Getters*******************************//
 	bool GetIsDead();
 	void SetIsDead(bool dead);
-	string KIMINONAWA();
+	virtual string printInfo(){ return ""; }
+	string printName();
 	void SetDetectionRange(float newRange);
 	float GetDetectionRange();
 	void SetAttackingRange(float newRange);

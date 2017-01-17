@@ -51,6 +51,10 @@ public:
 		GEO_HP_BAR,
 		GEO_BACKGROUND,
 		GEO_ALLY,
+		GEO_ARCHER,
+		GEO_MAGE,
+		GEO_KNIGHT,
+		GEO_BERSERK,
 		NUM_GEOMETRY,
 	};
 public:

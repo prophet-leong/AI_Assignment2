@@ -13,7 +13,8 @@ Character::Character(Vector2 Position, int health, float moveSpeed, int attack, 
 	this->Name = Name;
 	this->color = color;
 }
-string Character::KIMINONAWA()
+
+string Character::printName()
 {
 	return Name;
 }
