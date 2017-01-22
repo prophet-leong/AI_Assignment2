@@ -217,6 +217,7 @@ void SceneCollision::Render()
 
 void SceneCollision::Exit()
 {
+	MessageBoard::Destroy();
 	SceneBase::Exit();
 	//Cleanup GameObjects
 	while(m_goList.size() > 0)

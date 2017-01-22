@@ -5,6 +5,8 @@
 #include "Attack.h"
 #include "MessageBoard.h"
 #include "Bribe.h"
+#include <iostream>
+
 Ally::Ally()
 {
 	counter = 0;
@@ -31,9 +33,12 @@ Ally::Ally(Vector2 Position, int health, float moveSpeed, int attack, string Nam
 	this->detectionRange = detectionRange;
 	this->Name = Name;
 	this->color = color;
+	
 }
 void Ally::Update(double dt)
 {
+	if (isDead)
+		return;
 	if (currentState != 0)
 		currentState->update(dt, this, this->TargetedOpponent);
 
@@ -46,8 +51,7 @@ void Ally::Update(double dt)
 	}
 	if (TargetedOpponent == 0 && currentState->stateName != "PATROL")
 	{
-		State* patrol = new Patrol();
-		SetState(patrol);
+		SetState(new Patrol());
 	}
 
 }
@@ -61,14 +65,12 @@ void Ally::UpdateFSM()
 	if (health <= 0)
 	{
 		health = 0;
-		State *dead = new Dead();
-		SetState(dead);
+		SetState(new Dead());
 		isDead = true;
 	}
 	else if (currentState->stateName == "PATROL" && TargetedOpponent != 0)
 	{
-		State *moveto = new MoveTowards();
-		SetState(moveto);
+		SetState(new MoveTowards());
 	}
 	else if ((currentState->stateName == "MOVETOWARDS") && (lengthBetweenEnemy < attackRange * 0.8f))
 	{
@@ -79,8 +81,7 @@ void Ally::UpdateFSM()
 	}
 	else if ((currentState->stateName == "ATTACK") && (lengthBetweenEnemy > attackRange))
 	{
-		State *moveto = new MoveTowards();
-		SetState(moveto);
+		SetState(new MoveTowards());
 	}
 }
 bool Ally::SetTarget(Character *Opponent)
@@ -102,14 +103,13 @@ bool Ally::SetTarget(Character *Opponent)
 }
 void Ally::SetState(State* newState)
 {
-	if (currentState != 0)
-		delete currentState;
-
+	delete currentState;
 	currentState = newState;
 }
 Ally::~Ally()
 {
-
+	delete currentState;
+	WayPoints.clear();
 }
 
 string Ally::PrintStateName()

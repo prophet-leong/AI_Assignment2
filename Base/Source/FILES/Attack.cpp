@@ -12,10 +12,6 @@ void Attack::update(double dt, Character* character, Character* enemy)
 		if ((character->Position - enemy->Position).Length() <= character->GetAttackingRange())
 		{
 			enemy->health -= character->attack;
-			/*if (rand() % ((int)enemy->moveSpeed) == 0)
-			{
-			}*/
-			//set the attack time base on how many attacks per second
 			attackTime = 1.0f / character->attacksPerSecond;
 		}
 	}

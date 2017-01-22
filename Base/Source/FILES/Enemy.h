@@ -17,6 +17,7 @@ public:
 	virtual Message* GetMessage();
 	virtual void UpdateMessage(){};
 	virtual string printInfo();
+	virtual void SetIsDead(bool dead);
 	bool pendingRequest;
 	void Exit();
 protected:

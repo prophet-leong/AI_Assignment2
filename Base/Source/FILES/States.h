@@ -5,7 +5,7 @@ class State
 {
 public:
 	State();
-	~State();
+	virtual ~State();
 
 	virtual void update(double dt, Character* character , Character*enemy){};
 	std::string stateName;

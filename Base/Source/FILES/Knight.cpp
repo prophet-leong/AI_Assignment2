@@ -54,11 +54,6 @@ void Knight::Update(double dt)
 {
 	if (isDead)
 		return;
-	if (TargetedOpponent == NULL)
-	{
-		SetState(new Idle);
-		return;
-	}
 	//just a backup check
 	if (CurrentState != 0)
 		CurrentState->update(dt, this, this->TargetedOpponent);
@@ -69,15 +64,22 @@ void Knight::Update(double dt)
 		return;
 	}
 	//goes back to idle
-	if (TargetedOpponent != NULL)
+	if (TargetedOpponent == NULL)
 	{
-		//*1.2f for an offset so that the berserker wont keep losing its target 
-		if ((TargetedOpponent->Position - this->Position).Length() > detectionRange*1.2f)
-		{
-			TargetedOpponent = NULL;
-			State* idle = new Idle();
-			SetState(idle);
-		}
+		SetState(new Idle());
+	}
+	//*1.2f for an offset so that the berserker wont keep losing its target 
+	else if ((TargetedOpponent->Position - this->Position).Length() > detectionRange*1.2f)
+	{
+		TargetedOpponent = NULL;
+		State* idle = new Idle();
+		SetState(idle);
+	}
+	else if (TargetedOpponent->GetIsDead() == true)
+	{
+		TargetedOpponent = 0;
+		State* idle = new Idle();
+		SetState(idle);
 	}
 }
 void Knight::UpdateMessage()
@@ -111,8 +113,10 @@ void Knight::UpdateFSM()
 	{
 		this->health = 0;
 		isDead = true;
+		delete CurrentState;
+		CurrentState = 0;
 		MessageBoard::GetInstance()->EnemiesAlive--;
-		SetState(new Dead());
+		Exit(); 
 		return;
 	}
 	else if (this->health < maxHealth*0.3f && CurrentState->stateName != "BLOCKSTATE" && CurrentState->stateName != "CHARGESTATE")

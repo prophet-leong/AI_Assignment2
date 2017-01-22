@@ -41,6 +41,9 @@ void MessageBoard::Destroy()
 {
 	if (mb)
 	{
+		mb->Allies.clear();
+		mb->enemies.clear();
+		mb->messages.clear();
 		delete mb;
 		mb = nullptr;
 	}
@@ -113,7 +116,7 @@ void MessageBoard::SendMessageTo(Message* message)
 	{
 		for (unsigned int i = 0; i < enemies.size(); ++i)
 		{
-			if (enemies[i] != message->from && enemies[i])
+			if (enemies[i] != message->from && enemies[i]->GetIsDead() == false)
 			{
 				enemies[i]->SetMessage(message);
 			}
@@ -123,7 +126,7 @@ void MessageBoard::SendMessageTo(Message* message)
 	{
 		for (unsigned int i = 0; i < enemies.size(); ++i)
 		{
-			if (enemies[i] && enemies[i]->printName() == name)
+			if (enemies[i]->GetIsDead() == false && enemies[i]->printName() == name)
 			{
 				if (enemies[i]->GetMessage() == NULL)
 				{

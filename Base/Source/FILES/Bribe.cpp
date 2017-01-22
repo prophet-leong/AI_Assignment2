@@ -8,6 +8,7 @@
 
 Bribe::Bribe()
 {
+	stateName = "BRIBE";
 }
 Bribe::~Bribe()
 {

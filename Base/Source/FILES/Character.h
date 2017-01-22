@@ -20,7 +20,7 @@ public:
 	float attacksPerSecond;
 	//**************************Setters and Getters*******************************//
 	bool GetIsDead();
-	void SetIsDead(bool dead);
+	virtual void SetIsDead(bool dead);
 	virtual string printInfo(){ return ""; }
 	string printName();
 	void SetDetectionRange(float newRange);

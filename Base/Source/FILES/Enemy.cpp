@@ -6,9 +6,8 @@ Enemy::Enemy()
 }
 void Enemy::SetState(State* newState)
 {
-	if (CurrentState != 0)
+	if (CurrentState)
 		delete CurrentState;
-
 	CurrentState = newState;
 }
 string Enemy::PrintStateName()
@@ -44,8 +43,8 @@ Message* Enemy::GetMessage()
 }
 void Enemy::Exit()
 {
-	if (CurrentState != NULL)
-		delete CurrentState;
+	delete CurrentState;
+	CurrentState = NULL;
 	if (pendingRequest)
 	{
 		Message* temp = MessageBoard::GetInstance()->GetMessageFrom(this);
@@ -78,6 +77,11 @@ string Enemy::printInfo()
 	if (CurrentState)
 		temp += ":" + CurrentState->stateName;
 	return temp;
+}
+void Enemy::SetIsDead(bool dead)
+{
+	isDead = dead;
+	Exit();
 }
 Enemy::~Enemy()
 {
