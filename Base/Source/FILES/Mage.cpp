@@ -45,6 +45,7 @@ Mage::Mage(Mage*others)
 }
 Mage::~Mage()
 {
+	Exit();
 }
 
 void Mage::Update(double dt)
@@ -124,7 +125,7 @@ void Mage::UpdateFSM()
 		if (pendingRequest == false)
 		{
 			pendingRequest = true;
-			MessageBoard::GetInstance()->WriteToMessageBoard(new Message(MESSAGE_TYPE::NEED_HELP, AI_TYPES::KNIGHT, this));
+			//MessageBoard::GetInstance()->WriteToMessageBoard(new Message(MESSAGE_TYPE::NEED_HELP, AI_TYPES::KNIGHT, this));
 		}
 		State *run = new Teleport();
 		SetState(run);

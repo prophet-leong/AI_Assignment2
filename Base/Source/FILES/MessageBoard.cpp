@@ -41,9 +41,12 @@ void MessageBoard::Destroy()
 {
 	if (mb)
 	{
-		mb->Allies.clear();
-		mb->enemies.clear();
-		mb->messages.clear();
+		mb->ClearAllAllies();
+		mb->ClearAllEnemies();
+		for (int i = 0; i < mb->messages.size(); ++i)
+		{
+			delete mb->messages[i];
+		}
 		delete mb;
 		mb = nullptr;
 	}
@@ -139,6 +142,8 @@ void MessageBoard::SendMessageTo(Message* message)
 }
 void MessageBoard::RemoveMessage(Message* oldMessage)
 {
+	if (!oldMessage)
+		return;
 	if (oldMessage->message == MESSAGE_TYPE::FORM_UP)
 	{
 		MassMessage*temp = (MassMessage*)oldMessage;
@@ -247,9 +252,17 @@ int MessageBoard::GetEnemiesAlive()
 }
 void MessageBoard::ClearAllAllies()
 {
+	for (int i = 0; i < Allies.size(); ++i)
+	{
+		delete Allies[i];
+	}
 	Allies.clear();
 }
 void MessageBoard::ClearAllEnemies()
 {
+	for (int i = 0; i < enemies.size(); ++i)
+	{
+		delete enemies[i];
+	}
 	enemies.clear();
 }

@@ -108,8 +108,15 @@ void Ally::SetState(State* newState)
 }
 Ally::~Ally()
 {
+	
+	TargetedOpponent = NULL;
+	for (int i = 0; i < WayPoints.size(); ++i)
+	{
+		delete WayPoints[i];
+	}
+
 	delete currentState;
-	WayPoints.clear();
+	currentState = NULL;
 }
 
 string Ally::PrintStateName()
