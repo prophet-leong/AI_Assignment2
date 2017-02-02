@@ -43,7 +43,7 @@ void MessageBoard::Destroy()
 	{
 		mb->ClearAllAllies();
 		mb->ClearAllEnemies();
-		for (int i = 0; i < mb->messages.size(); ++i)
+		for (unsigned int i = 0; i < mb->messages.size(); ++i)
 		{
 			delete mb->messages[i];
 		}
@@ -252,7 +252,7 @@ int MessageBoard::GetEnemiesAlive()
 }
 void MessageBoard::ClearAllAllies()
 {
-	for (int i = 0; i < Allies.size(); ++i)
+	for (unsigned int i = 0; i < Allies.size(); ++i)
 	{
 		delete Allies[i];
 	}
@@ -260,7 +260,7 @@ void MessageBoard::ClearAllAllies()
 }
 void MessageBoard::ClearAllEnemies()
 {
-	for (int i = 0; i < enemies.size(); ++i)
+	for (unsigned int i = 0; i < enemies.size(); ++i)
 	{
 		delete enemies[i];
 	}

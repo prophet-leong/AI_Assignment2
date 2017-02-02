@@ -8,33 +8,40 @@ BlockState::BlockState()
 }
 void BlockState::update(double dt, Character* self, Character *target)
 {
-	if (!RunOnce)
+	if ((Knight*)self->GetTarget())
 	{
-		Timer = ((Knight*)self)->GetBlockBlockDuration();
-		MaxTimePerHeal = Timer / ((Knight*)self)->GetTicks();
-		timePerHeal = MaxTimePerHeal;
-		RunOnce = true;
-	}
-	else
-	{
-		if (Timer > 0)
+		if (!RunOnce)
 		{
-			Timer -= (float)dt;
-			if (timePerHeal > 0)
-			{
-				timePerHeal -= (float)dt;
-			}
-			else
-			{
-				//change this later
-				self->health += 1;
-				timePerHeal = MaxTimePerHeal;
-			}
+			Timer = ((Knight*)self)->GetBlockBlockDuration();
+			MaxTimePerHeal = Timer / ((Knight*)self)->GetTicks();
+			timePerHeal = MaxTimePerHeal;
+			RunOnce = true;
 		}
 		else
 		{
-			((Knight*)self)->SetState(new Idle());
+			if (Timer > 0)
+			{
+				Timer -= (float)dt;
+				if (timePerHeal > 0)
+				{
+					timePerHeal -= (float)dt;
+				}
+				else
+				{
+					//change this later
+					self->health += 1;
+					timePerHeal = MaxTimePerHeal;
+				}
+			}
+			else
+			{
+				((Knight*)self)->SetState(new Idle());
+			}
 		}
+	}
+	else
+	{
+		((Knight*)self)->SetState(new Idle());
 	}
 }
 BlockState::~BlockState()

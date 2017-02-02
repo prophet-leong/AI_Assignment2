@@ -26,6 +26,8 @@ protected:
 	float m_worldWidth;
 	float m_worldHeight;
 	int m_objectCount;
+private:
+	bool pressed;
 };
 
 #endif

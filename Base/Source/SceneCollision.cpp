@@ -31,6 +31,9 @@ void SceneCollision::Init()
 {
 	srand((unsigned)time(NULL));
 	SceneBase::Init();
+
+	pressed = false;
+
 	MessageBoard::GetInstance()->AddEnemy(new Berserker(Vector2(15.f, 0), 10, 2, 1, "Berserker", 1.5f, 1, 3.0f, Color(0.5f, 0.0f, 0.0f)));
 	MessageBoard::GetInstance()->AddEnemy(new Knight(Vector2(5.f, 0), 20, 2, 1, "Knight", 1.5f, 1, 3.0f, 2.0f, 7, Color(0.5f, 0.5f, 0.0f)));
 	MessageBoard::GetInstance()->AddEnemy(new Archer(Vector2(10, 5.f), 10, 1, 1, 1, "Archer", 4, Color(0.5f, 0.0f, 0.5f)));
@@ -99,31 +102,40 @@ void SceneCollision::Update(double dt)
 		TargetedLocation.x += 8 * (float)dt;
 	}
 
-	if (Application::IsKeyPressed('1'))
+	if ((Application::IsKeyPressed('1') || Application::IsKeyPressed('2') || Application::IsKeyPressed('3') || Application::IsKeyPressed('4') || Application::IsKeyPressed('5')) && !pressed)
 	{
-		MessageBoard::GetInstance()->AddEnemy((new Berserker(TargetedLocation, 10, 2, 1, "Berserker", 1.5f, 1, 3.0f, Color(0.5f, 0.0f, 0.0f))));
+		pressed = true;
+		if (Application::IsKeyPressed('1'))
+		{
+			MessageBoard::GetInstance()->AddEnemy((new Berserker(TargetedLocation, 10, 2, 1, "Berserker", 1.5f, 1, 3.0f, Color(0.5f, 0.0f, 0.0f))));
+		}
+		else if (Application::IsKeyPressed('2'))
+		{
+			MessageBoard::GetInstance()->AddEnemy(new Knight(TargetedLocation, 20, 2, 1, "Knight", 1.5f, 1, 3.0f, 2.0f, 7, Color(0.5f, 0.5f, 0.0f)));
+		}
+		else if (Application::IsKeyPressed('3'))
+		{
+			MessageBoard::GetInstance()->AddEnemy(new Archer(TargetedLocation, 10, 1, 1, 1, "Archer", 4, Color(0.5f, 0.0f, 0.5f)));
+		}
+		else if (Application::IsKeyPressed('4'))
+		{
+			MessageBoard::GetInstance()->AddEnemy(new Mage(TargetedLocation, 10, 2, 1, 1, "Mage", 5, Color(0.0f, 0.0f, 0.8f)));
+		}
+		else if (Application::IsKeyPressed('5'))
+		{
+			MessageBoard::GetInstance()->AddAlly(new Ally(TargetedLocation, 20, 4, 2, "Hero", 1.5f, 1.5f, 6.0f, Color(0.0f, 0.8f, 0.0f)));
+		}
 	}
-	if (Application::IsKeyPressed('2'))
+	if (!(Application::IsKeyPressed('1') || Application::IsKeyPressed('2') || Application::IsKeyPressed('3') || Application::IsKeyPressed('4') || Application::IsKeyPressed('5')) && pressed)
 	{
-		MessageBoard::GetInstance()->AddEnemy(new Knight(TargetedLocation, 20, 2, 1, "Knight", 1.5f, 1, 3.0f, 2.0f, 7, Color(0.5f, 0.5f, 0.0f)));
-	}
-	if (Application::IsKeyPressed('3'))
-	{
-		MessageBoard::GetInstance()->AddEnemy(new Archer(TargetedLocation, 10, 1, 1, 1, "Archer", 4, Color(0.5f, 0.0f, 0.5f)));
-	}
-	if (Application::IsKeyPressed('4'))
-	{
-		MessageBoard::GetInstance()->AddEnemy(new Mage(TargetedLocation, 10, 2, 1, 1, "Mage", 5, Color(0.0f, 0.0f, 0.8f)));
-	}
-	if (Application::IsKeyPressed('5'))
-	{
-		MessageBoard::GetInstance()->AddAlly(new Ally(TargetedLocation, 20, 4, 2, "Hero", 1.5f, 1.5f, 6.0f, Color(0.0f, 0.8f, 0.0f)));
+		pressed = false;
 	}
 
 	if (Application::IsKeyPressed('R'))
 	{
 		MessageBoard::GetInstance()->ClearAllAllies();
 		MessageBoard::GetInstance()->ClearAllEnemies();
+		return;
 	}
 	fps = 1/(float)dt;
 	MessageBoard::GetInstance()->UpdateAI(dt);
@@ -146,7 +158,8 @@ void SceneCollision::RenderGO(Character *go,bool isAlly)
 				RenderMesh(meshList[GEO_BERSERK], false);
 		}
 		else
-			RenderMesh(meshList[GEO_ALLY], false);
+			RenderMesh(meshList[GEO_BALL], false);
+
 		modelStack.PushMatrix();
 			//might need to scale here?
 			modelStack.PushMatrix();
@@ -193,6 +206,12 @@ void SceneCollision::Render()
 	viewStack.LookAt(camera.position, camera.target,camera.up);
 	// Model matrix : an identity matrix (model will be at the origin)
 	modelStack.LoadIdentity();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(TargetedLocation.x, TargetedLocation.y, 0);
+	modelStack.Scale(0.1f, 0.1f, 1);
+	RenderMesh(meshList[GEO_BALL], false);
+	modelStack.PopMatrix();
 
 	float depth = 0.f;
 	for (unsigned int i = 0; i < MessageBoard::GetInstance()->GetAllyVector().size(); ++i)

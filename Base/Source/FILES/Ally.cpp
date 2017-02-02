@@ -110,7 +110,7 @@ Ally::~Ally()
 {
 	
 	TargetedOpponent = NULL;
-	for (int i = 0; i < WayPoints.size(); ++i)
+	for (unsigned int i = 0; i < WayPoints.size(); ++i)
 	{
 		delete WayPoints[i];
 	}

@@ -135,8 +135,11 @@ void Knight::UpdateFSM()
 		}
 		if (rand() % 2 == 1)
 		{
-			State* Block = new BlockState();
-			SetState(Block);
+			if (TargetedOpponent != nullptr)
+			{
+				State* Block = new BlockState();
+				SetState(Block);
+			}
 		}
 		else if (!chargestate)
 		{
