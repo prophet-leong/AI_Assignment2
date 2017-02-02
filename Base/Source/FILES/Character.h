@@ -22,6 +22,7 @@ public:
 	bool GetIsDead();
 	virtual void SetIsDead(bool dead);
 	virtual string printInfo(){ return ""; }
+	void overrideName(string name);
 	string printName();
 	void SetDetectionRange(float newRange);
 	float GetDetectionRange();

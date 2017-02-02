@@ -243,10 +243,6 @@ void SceneCollision::Render()
 		}
 		depth += 0.01f;
 	}
-	//modelStack.PushMatrix();
-	//modelStack.Translate(0, 3.f, 1.f);
-	//RenderText(meshList[GEO_TEXT],std::to_string(fps), Color(0.5f, 0.5f, 0.5f));
-	//modelStack.PopMatrix();
 	vector<Message*>* msg = MessageBoard::GetInstance()->getMessageVector();
 	for (unsigned int i = 0; i < msg->size(); ++i)
 	{

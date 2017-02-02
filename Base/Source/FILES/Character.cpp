@@ -14,6 +14,11 @@ Character::Character(Vector2 Position, int health, float moveSpeed, int attack, 
 	this->color = color;
 }
 
+void Character::overrideName(string name)
+{
+	Name = name;
+}
+
 string Character::printName()
 {
 	return Name;

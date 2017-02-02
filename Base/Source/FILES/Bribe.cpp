@@ -20,12 +20,13 @@ void Bribe::update(double dt, Character* character, Character * enemy)
 	Character* BribeTarget;
 	if (enemy->printName() == "Knight")
 		BribeTarget = new Knight(((Knight*)enemy));
+		
 	else if (enemy->printName() == "Mage")
 		BribeTarget = new Mage(((Mage*)enemy));
 	else if (enemy->printName() == "Berserker")
 		BribeTarget = new Berserker(((Berserker*)enemy));
 	else if (enemy->printName() == "Archer")
 		BribeTarget = new Archer(((Archer*)enemy));
-
+	BribeTarget->overrideName("Ally");
 	MessageBoard::GetInstance()->AddAlly(BribeTarget);//make an exact same copy and put into the ally vector
 }
