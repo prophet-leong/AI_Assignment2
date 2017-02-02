@@ -123,3 +123,11 @@ string Ally::PrintStateName()
 {
 	return currentState->stateName;
 }
+
+string Ally::printInfo()
+{
+	string temp = Name;
+	if (currentState)
+		temp += ":" + currentState->stateName;
+	return temp;
+}

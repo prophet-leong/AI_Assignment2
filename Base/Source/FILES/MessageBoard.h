@@ -23,9 +23,9 @@ public:
 	void RemoveAlly(Character*ally);
 	void UpdateAI(double dt);
 	Enemy* GetEnemy(int i);
-	vector<Enemy*> GetEnemyVector();
+	vector<Enemy*> & GetEnemyVector();
 	Character* GetAlly(int i);
-	vector<Character*> GetAllyVector();
+	vector<Character*> & GetAllyVector();
 	int GetEnemiesAlive();
 	void ClearAllEnemies();
 	void ClearAllAllies();

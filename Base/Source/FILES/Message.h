@@ -23,6 +23,7 @@ public:
 	string printMessage();
 	AI_TYPES to;
 	Character* from;
+	string sentTo;
 private:
 
 };

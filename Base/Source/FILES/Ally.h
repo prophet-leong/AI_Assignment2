@@ -13,6 +13,7 @@ public:
 	virtual bool SetTarget(Character*Opponent);
 	virtual void Update(double dt);
 	virtual void UpdateFSM();
+	virtual string printInfo();
 	vector<Vector2*>WayPoints;
 	int counter;
 	string PrintStateName();

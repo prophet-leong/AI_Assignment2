@@ -146,6 +146,9 @@ void SceneCollision::RenderGO(Character *go,bool isAlly)
 {
 	modelStack.PushMatrix();
 		modelStack.Translate(go->Position.x, go->Position.y, 0.f);
+
+		modelStack.PushMatrix();
+		modelStack.Scale(2, 2, 2);
 		if (!isAlly)
 		{
 			if (go->printName() == "Knight")
@@ -159,6 +162,8 @@ void SceneCollision::RenderGO(Character *go,bool isAlly)
 		}
 		else
 			RenderMesh(meshList[GEO_BALL], false);
+		modelStack.PopMatrix();
+
 
 		modelStack.PushMatrix();
 			//might need to scale here?
@@ -238,18 +243,18 @@ void SceneCollision::Render()
 		}
 		depth += 0.01f;
 	}
-	modelStack.PushMatrix();
-	modelStack.Translate(0, 3.f, 1.f);
-	RenderText(meshList[GEO_TEXT],std::to_string(fps), Color(0.5f, 0.5f, 0.5f));
-	modelStack.PopMatrix();
+	//modelStack.PushMatrix();
+	//modelStack.Translate(0, 3.f, 1.f);
+	//RenderText(meshList[GEO_TEXT],std::to_string(fps), Color(0.5f, 0.5f, 0.5f));
+	//modelStack.PopMatrix();
 	vector<Message*>* msg = MessageBoard::GetInstance()->getMessageVector();
 	for (unsigned int i = 0; i < msg->size(); ++i)
 	{
 		if (msg->at(i))
 		{
 			modelStack.PushMatrix();
-			modelStack.Translate(-15.f, 9.f - i, 1.f);
-			RenderText(meshList[GEO_TEXT], msg->at(i)->printMessage(), Color(0.5f, 0.5f, 0.5f));
+			modelStack.Translate(-19.f, 9.f - i, 1.f);
+			RenderText(meshList[GEO_TEXT], msg->at(i)->printMessage(), Color(1.f, 1.f, 1.f));
 			modelStack.PopMatrix();
 		}
 	}

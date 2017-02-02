@@ -122,10 +122,17 @@ void Mage::UpdateFSM()
 	}
 	else if ((lengthBetweenEnemy < attackRange * 0.5f) && (this->health < this->maxHealth * 0.5f) && !this->teleport)
 	{
-		if (pendingRequest == false)
+		if (!pendingRequest)
 		{
-			pendingRequest = true;
-			MessageBoard::GetInstance()->WriteToMessageBoard(new Message(MESSAGE_TYPE::NEED_HELP, AI_TYPES::KNIGHT, this));
+			for (vector<Enemy*>::iterator i = MessageBoard::GetInstance()->GetEnemyVector().begin(); i != MessageBoard::GetInstance()->GetEnemyVector().end(); ++i)
+			{
+				if ((*i)->printName() == "Knight")
+				{
+					pendingRequest = true;
+					MessageBoard::GetInstance()->WriteToMessageBoard(new Message(MESSAGE_TYPE::NEED_HELP, AI_TYPES::KNIGHT, this));
+					break;
+				}
+			}
 		}
 		State *run = new Teleport();
 		SetState(run);

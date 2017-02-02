@@ -116,12 +116,19 @@ void Berserker::UpdateFSM()
 	}
 	else if (this->health < maxHealth * 0.5f)
 	{
-		if (pendingRequest == false)
+		for (vector<Enemy*>::iterator i = MessageBoard::GetInstance()->GetEnemyVector().begin(); i != MessageBoard::GetInstance()->GetEnemyVector().end(); ++i)
 		{
-			pendingRequest = true;
-			MessageBoard::GetInstance()->WriteToMessageBoard(new Message(MESSAGE_TYPE::NEED_HELP, AI_TYPES::MAGE, this));
+			if ((*i)->printName() == "Mage")
+			{
+				if (!pendingRequest)
+				{
+					pendingRequest = true;
+					MessageBoard::GetInstance()->WriteToMessageBoard(new Message(MESSAGE_TYPE::NEED_HELP, AI_TYPES::MAGE, this));
+					break;
+				}
+			}
 		}
-		if (berserkMode == false)
+		if (!berserkMode)
 		{
 			State* temp = (rand() % 2 == 0 ? (State*)(new BerserkState()) : new RunAway());
 			SetState(temp);

@@ -119,27 +119,34 @@ void Knight::UpdateFSM()
 		Exit(); 
 		return;
 	}
-	else if (this->health < maxHealth*0.3f && CurrentState->stateName != "BLOCKSTATE" && CurrentState->stateName != "CHARGESTATE")
+	else if (this->health < maxHealth*0.3f && CurrentState->stateName != "BLOCKSTATE" && CurrentState->stateName != "CHARGESTATE" && TargetedOpponent != nullptr)
 	{
 		if (pendingRequest == false)
 		{
 			pendingRequest = true;
 			if (rand() % 2 == 1)
-				MessageBoard::GetInstance()->WriteToMessageBoard(new Message(MESSAGE_TYPE::NEED_HELP, AI_TYPES::ARCHER, this));
+			{
+				for (vector<Enemy*>::iterator i = MessageBoard::GetInstance()->GetEnemyVector().begin(); i != MessageBoard::GetInstance()->GetEnemyVector().end(); ++i)
+				{
+					if ((*i)->printName() == "Archer")
+					{
+						//we can find at LEAST 1 archer
+						MessageBoard::GetInstance()->WriteToMessageBoard(new Message(MESSAGE_TYPE::NEED_HELP, AI_TYPES::ARCHER, this));
+						break;
+					}
+				}
+			}
 			else
 			{
 				int temp = MessageBoard::GetInstance()->GetEnemiesAlive();
-				MessageBoard::GetInstance()->WriteToMessageBoard(new MassMessage(MESSAGE_TYPE::FORM_UP, AI_TYPES::ALL, this,temp-1));
+				MessageBoard::GetInstance()->WriteToMessageBoard(new MassMessage(MESSAGE_TYPE::FORM_UP, AI_TYPES::ALL, this, temp-1));
 			}
 
 		}
 		if (rand() % 2 == 1)
 		{
-			if (TargetedOpponent != nullptr)
-			{
 				State* Block = new BlockState();
 				SetState(Block);
-			}
 		}
 		else if (!chargestate)
 		{

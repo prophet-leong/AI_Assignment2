@@ -234,7 +234,7 @@ Enemy* MessageBoard::GetEnemy(int i)
 {
 	return enemies[i];
 }
-vector<Enemy*> MessageBoard::GetEnemyVector()
+vector<Enemy*> & MessageBoard::GetEnemyVector()
 {
 	return enemies;
 }
@@ -242,7 +242,7 @@ Character* MessageBoard::GetAlly(int i)
 {
 	return Allies[i];
 }
-vector<Character*> MessageBoard::GetAllyVector()
+vector<Character*> & MessageBoard::GetAllyVector()
 {
 	return Allies;
 }
