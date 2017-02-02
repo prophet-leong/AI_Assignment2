@@ -17,9 +17,9 @@ MessageBoard::~MessageBoard()
 {
 }
 
-vector<Message*>* MessageBoard::getMessageVector()
+vector<Message*> & MessageBoard::getMessageVector()
 {
-	return &messages;
+	return messages;
 }
 
 void MessageBoard::getMessage()
@@ -119,7 +119,7 @@ void MessageBoard::SendMessageTo(Message* message)
 	{
 		for (unsigned int i = 0; i < enemies.size(); ++i)
 		{
-			if (enemies[i] != message->from && enemies[i]->GetIsDead() == false)
+			if (enemies[i] != message->from && !enemies[i]->GetIsDead())
 			{
 				enemies[i]->SetMessage(message);
 			}
@@ -129,7 +129,7 @@ void MessageBoard::SendMessageTo(Message* message)
 	{
 		for (unsigned int i = 0; i < enemies.size(); ++i)
 		{
-			if (enemies[i]->GetIsDead() == false && enemies[i]->printName() == name)
+			if (!enemies[i]->GetIsDead() && enemies[i]->printName() == name)
 			{
 				if (enemies[i]->GetMessage() == NULL)
 				{

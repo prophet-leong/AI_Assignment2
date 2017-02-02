@@ -243,14 +243,14 @@ void SceneCollision::Render()
 		}
 		depth += 0.01f;
 	}
-	vector<Message*>* msg = MessageBoard::GetInstance()->getMessageVector();
-	for (unsigned int i = 0; i < msg->size(); ++i)
+	vector<Message*> msg = MessageBoard::GetInstance()->getMessageVector();
+	for (unsigned int i = 0; i < (&msg)->size(); ++i)
 	{
-		if (msg->at(i))
+		if ((&msg)->at(i))
 		{
 			modelStack.PushMatrix();
 			modelStack.Translate(-19.f, 9.f - i, 1.f);
-			RenderText(meshList[GEO_TEXT], msg->at(i)->printMessage(), Color(1.f, 1.f, 1.f));
+			RenderText(meshList[GEO_TEXT], (&msg)->at(i)->printMessage(), Color(1.f, 1.f, 1.f));
 			modelStack.PopMatrix();
 		}
 	}

@@ -16,7 +16,7 @@ public:
 	void SendMessageTo(Message* message);
 	Message* GetMessageFrom(Character* Sender);
 	void getMessage();
-	vector<Message*>* getMessageVector();
+	vector<Message*> & getMessageVector();
 	void AddEnemy(Enemy* enemy);
 	void RemoveEnemy(Enemy*enemy);
 	void AddAlly(Character* ally);

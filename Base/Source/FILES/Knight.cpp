@@ -121,7 +121,7 @@ void Knight::UpdateFSM()
 	}
 	else if (this->health < maxHealth*0.3f && CurrentState->stateName != "BLOCKSTATE" && CurrentState->stateName != "CHARGESTATE" && TargetedOpponent != nullptr)
 	{
-		if (pendingRequest == false)
+		if (!pendingRequest)
 		{
 			pendingRequest = true;
 			if (rand() % 2 == 1)

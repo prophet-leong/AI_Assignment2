@@ -88,10 +88,9 @@ void Berserker::UpdateMessage()
 	{
 		TargetedOpponent = NULL;
 		State* idle;
-		if (berserkMode == false)
-			idle = new BerserkState();
-		else
-			idle = new Idle();
+
+		idle = !berserkMode ? (State*)(new BerserkState()) : new Idle;
+
 		SetState(idle);
 		MessageBoard::GetInstance()->RemoveMessage(messages);
 		messages = NULL;
