@@ -8,6 +8,8 @@ ChargeState::ChargeState()
 }
 void ChargeState::update(double dt, Character* enemy, Character* target)
 {
+	if (!target)
+		return;
 	if(chargeTime == 1.0f)
 		Direction = Vector2((target->Position - enemy->Position).Normalized());
 	else if (chargeTime >= 0.0f)

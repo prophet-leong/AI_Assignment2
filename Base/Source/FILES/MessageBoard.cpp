@@ -155,7 +155,7 @@ void MessageBoard::RemoveMessage(Message* oldMessage)
 	{
 		if (messages[i] == oldMessage)
 		{
-			((Enemy*)oldMessage->from)->pendingRequest = false;	//allows the enemy to send another help message
+			//((Enemy*)oldMessage->from)->pendingRequest = false;	//allows the enemy to send another help message
 			delete messages[i];		//remove the actual data
 			messages[i] = NULL;		//set the vector[i] to NULL so i can reuse
 			return;					//end the function if condition met

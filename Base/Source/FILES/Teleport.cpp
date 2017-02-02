@@ -10,6 +10,8 @@ Teleport::Teleport()
 }
 void Teleport::update(double dt, Character* self, Character* other)
 {
+	if (!other)
+		return;
 	if (!((Mage*)(self))->teleport)
 	{
 		int action = rand() % 100 + 1;

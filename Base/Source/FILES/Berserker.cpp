@@ -119,7 +119,7 @@ void Berserker::UpdateFSM()
 		if (pendingRequest == false)
 		{
 			pendingRequest = true;
-			//MessageBoard::GetInstance()->WriteToMessageBoard(new Message(MESSAGE_TYPE::NEED_HELP, AI_TYPES::MAGE, this));
+			MessageBoard::GetInstance()->WriteToMessageBoard(new Message(MESSAGE_TYPE::NEED_HELP, AI_TYPES::MAGE, this));
 		}
 		if (berserkMode == false)
 		{

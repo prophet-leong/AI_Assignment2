@@ -124,11 +124,13 @@ void Knight::UpdateFSM()
 		if (pendingRequest == false)
 		{
 			pendingRequest = true;
-	/*		if (rand() % 2 == 1)
+			if (rand() % 2 == 1)
 				MessageBoard::GetInstance()->WriteToMessageBoard(new Message(MESSAGE_TYPE::NEED_HELP, AI_TYPES::ARCHER, this));
-			else*/
-			int temp = MessageBoard::GetInstance()->GetEnemiesAlive();
+			else
+			{
+				int temp = MessageBoard::GetInstance()->GetEnemiesAlive();
 				MessageBoard::GetInstance()->WriteToMessageBoard(new MassMessage(MESSAGE_TYPE::FORM_UP, AI_TYPES::ALL, this,temp-1));
+			}
 
 		}
 		if (rand() % 2 == 1)

@@ -89,7 +89,7 @@ void Mage::UpdateMessage()
 		TargetedOpponent = NULL;
 		return;
 	}
-	if ((TargetedOpponent->Position - this->Position).LengthSquare() < attackRange *attackRange)
+	if ((TargetedOpponent->Position - this->Position).LengthSquare() < attackRange *attackRange*0.5f)
 	{
 		TargetedOpponent = NULL;
 		State* idle = new Idle();
@@ -125,7 +125,7 @@ void Mage::UpdateFSM()
 		if (pendingRequest == false)
 		{
 			pendingRequest = true;
-			//MessageBoard::GetInstance()->WriteToMessageBoard(new Message(MESSAGE_TYPE::NEED_HELP, AI_TYPES::KNIGHT, this));
+			MessageBoard::GetInstance()->WriteToMessageBoard(new Message(MESSAGE_TYPE::NEED_HELP, AI_TYPES::KNIGHT, this));
 		}
 		State *run = new Teleport();
 		SetState(run);

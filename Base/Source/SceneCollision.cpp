@@ -12,6 +12,10 @@
 #include <time.h>
 #include <fstream>
 #include "FILES\MoveTowards.h"
+#include "FILES\Attack.h"
+#include "FILES\Bribe.h"
+#include "FILES\BerserkState.h"
+#include "FILES\Idle.h"
 _CrtMemState s1;
 _CrtMemState s2;
 _CrtMemState s3;
@@ -35,13 +39,15 @@ void SceneCollision::Init()
 	MessageBoard::GetInstance()->AddAlly(new Ally(Vector2(4.f, 0), 20, 4, 2, "Hero", 1.5f, 1.5f, 6.0f, Color(0.0f, 0.8f, 0.0f)));
 	_CrtMemCheckpoint(&s1);
 	Character* chara = new Ally(Vector2(4.f, 0), 20, 4, 2, "Hero", 1.5f, 1.5f, 6.0f, Color(0.0f, 0.8f, 0.0f));
-	Character* chara2 = new Archer(Vector2(10, 5.f), 10, 1, 1, 1, "Archer", 4, Color(0.5f, 0.0f, 0.5f));
-	chara->SetTarget(chara2);
-	chara->UpdateFSM();
-	//chara->SetState(new MoveTowards());
-	chara->Update(0.01);
+	//chara->UpdateFSM();
+	////chara->SetState(new MoveTowards());
+	//chara->Update(0.01);
+	//Message* mesa = new Message(MESSAGE_TYPE::FORM_UP, AI_TYPES::ARCHER, chara);
+	//delete mesa;
+	State* state = new Idle();
+	state->update(0.1f, chara, chara);
+	delete state;
 	delete chara;
-	delete chara2;
 	_CrtMemCheckpoint(&s2);
 	if (_CrtMemDifference(&s3, &s1, &s2))
 		_CrtMemDumpStatistics(&s3);

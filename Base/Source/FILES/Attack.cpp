@@ -7,6 +7,8 @@ Attack::Attack()
 }
 void Attack::update(double dt, Character* character, Character* enemy)
 {
+	if (!enemy)
+		return;
 	if (attackTime <= 0.0f)
 	{
 		if ((character->Position - enemy->Position).Length() <= character->GetAttackingRange())
