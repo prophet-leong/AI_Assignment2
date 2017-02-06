@@ -28,7 +28,7 @@ void Bribe::update(double dt, Character* character, Character * enemy)
 	else if (enemy->printName() == "Archer")
 		BribeTarget = new Archer(((Archer*)enemy));*/
 
-	BribeTarget = new Ally(enemy->Position, enemy->health, enemy->moveSpeed, enemy->attack, "Ally", enemy->GetAttackingRange(), enemy->attacksPerSecond, enemy->GetDetectionRange(),  Color(0.0f, 0.8f, 0.0f));
+	BribeTarget = new Ally(enemy->Position, enemy->health, enemy->moveSpeed, enemy->attack, "Ally->"+enemy->printName(), enemy->GetAttackingRange(), enemy->attacksPerSecond, enemy->GetDetectionRange(),  Color(0.0f, 0.8f, 0.0f));
 	//depending on what they were, this could be some seriously strong shit
 
 	MessageBoard::GetInstance()->AddAlly(BribeTarget);//make an exact same copy and put into the ally vector
