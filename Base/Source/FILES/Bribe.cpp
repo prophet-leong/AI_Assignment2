@@ -17,7 +17,7 @@ void Bribe::update(double dt, Character* character, Character * enemy)
 {
 	enemy->SetIsDead(true);//make the real enemy dead first, i can't remove it as there might be other objects using it
 	MessageBoard::GetInstance()->EnemiesAlive--;
-	Character* BribeTarget;
+	Ally* BribeTarget;
 
 	/*if (enemy->printName() == "Knight")
 		BribeTarget = new Knight(((Knight*)enemy));

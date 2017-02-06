@@ -185,11 +185,6 @@ void SceneCollision::RenderGO(Character *go,bool isAlly)
 			RenderMesh(meshList[GEO_HP_BAR], false);
 		modelStack.PopMatrix();
 
-		modelStack.PushMatrix();
-			modelStack.Translate(0, -0.5f, 1.f);
-			RenderText(meshList[GEO_TEXT], go->printInfo(), Color(0.5f, 0.5f, 0.5f));
-		modelStack.PopMatrix();
-
 	modelStack.PopMatrix();
 }
 void SceneCollision::Render()
@@ -244,13 +239,39 @@ void SceneCollision::Render()
 		depth += 0.01f;
 	}
 	vector<Message*> msg = MessageBoard::GetInstance()->getMessageVector();
-	for (unsigned int i = 0; i < (&msg)->size(); ++i)
+	for (unsigned int i = 0; i < msg.size(); ++i)
 	{
-		if ((&msg)->at(i))
+		if (msg.at(i))
 		{
 			modelStack.PushMatrix();
 			modelStack.Translate(-19.f, 9.f - i, 1.f);
 			RenderText(meshList[GEO_TEXT], (&msg)->at(i)->printMessage(), Color(1.f, 1.f, 1.f));
+			modelStack.PopMatrix();
+		}
+	}
+
+	vector<Ally*> ally = MessageBoard::GetInstance()->GetAllyVector();
+	vector<Enemy*> enemy = MessageBoard::GetInstance()->GetEnemyVector();
+
+	for (unsigned int i = 0; i < ally.size(); i++)
+	{
+		if (!ally.at(i)->GetIsDead())
+		{
+			modelStack.PushMatrix();
+			modelStack.Translate(-10.f, 0.f - i, 1.f);
+			modelStack.Scale(0.5f, 0.5f, 0.5f);
+			RenderText(meshList[GEO_TEXT], ally.at(i)->printInfo(), Color(1.f, 1.f, 1.f));
+			modelStack.PopMatrix();
+		}
+	}
+	for (unsigned int i = 0; i < enemy.size(); i++)
+	{
+		if (!enemy.at(i)->GetIsDead())
+		{
+			modelStack.PushMatrix();
+			modelStack.Translate(-19.f, 0.f - i, 1.f);
+			modelStack.Scale(0.5f, 0.5f, 0.5f);
+			RenderText(meshList[GEO_TEXT], enemy.at(i)->printInfo(), Color(1.f, 1.f, 1.f));
 			modelStack.PopMatrix();
 		}
 	}

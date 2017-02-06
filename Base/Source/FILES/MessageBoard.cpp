@@ -205,7 +205,7 @@ void MessageBoard::RemoveEnemy(Enemy*enemy)
 	//	}
 	//}
 }
-void MessageBoard::AddAlly(Character* ally)
+void MessageBoard::AddAlly(Ally* ally)
 {
 	for (unsigned int i = 0; i < Allies.size(); ++i)
 	{
@@ -218,7 +218,7 @@ void MessageBoard::AddAlly(Character* ally)
 	}
 	Allies.push_back(ally);
 }
-void MessageBoard::RemoveAlly(Character*ally)
+void MessageBoard::RemoveAlly(Ally*ally)
 {
 	for (unsigned int i = 0; i < Allies.size(); ++i)
 	{
@@ -242,7 +242,7 @@ Character* MessageBoard::GetAlly(int i)
 {
 	return Allies[i];
 }
-vector<Character*> & MessageBoard::GetAllyVector()
+vector<Ally*> & MessageBoard::GetAllyVector()
 {
 	return Allies;
 }
