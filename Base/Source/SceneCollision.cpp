@@ -142,26 +142,28 @@ void SceneCollision::Update(double dt)
 }
 
 
-void SceneCollision::RenderGO(Character *go,bool isAlly)
+void SceneCollision::RenderGO(Character *go, bool isAlly)
 {
 	modelStack.PushMatrix();
 		modelStack.Translate(go->Position.x, go->Position.y, 0.f);
 
 		modelStack.PushMatrix();
-		modelStack.Scale(2, 2, 2);
-		if (!isAlly)
-		{
-			if (go->printName() == "Knight")
-				RenderMesh(meshList[GEO_KNIGHT], false);
-			else if (go->printName() == "Mage")
-				RenderMesh(meshList[GEO_MAGE], false);
-			else if (go->printName() == "Archer")
-				RenderMesh(meshList[GEO_ARCHER], false);
-			else if (go->printName() == "Berserker")
-				RenderMesh(meshList[GEO_BERSERK], false);
-		}
-		else
-			RenderMesh(meshList[GEO_BALL], false);
+			modelStack.Scale(2, 2, 2);
+			if (!isAlly)
+			{
+				if (go->printName() == "Knight")
+					RenderMesh(meshList[GEO_KNIGHT], false);
+				else if (go->printName() == "Mage")
+					RenderMesh(meshList[GEO_MAGE], false);
+				else if (go->printName() == "Archer")
+					RenderMesh(meshList[GEO_ARCHER], false);
+				else if (go->printName() == "Berserker")
+					RenderMesh(meshList[GEO_BERSERK], false);
+			}
+			else
+			{
+				RenderMesh(meshList[GEO_BALL], false);
+			}
 		modelStack.PopMatrix();
 
 

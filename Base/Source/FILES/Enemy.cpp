@@ -81,8 +81,8 @@ string Enemy::printInfo()
 void Enemy::SetIsDead(bool dead)
 {
 	isDead = dead;
-	Exit();
 }
 Enemy::~Enemy()
 {
+	Exit();
 }

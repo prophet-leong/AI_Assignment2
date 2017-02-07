@@ -47,8 +47,9 @@ void MessageBoard::Destroy()
 		{
 			delete mb->messages[i];
 		}
+		mb->messages.clear();
 		delete mb;
-		mb = nullptr;
+		mb = NULL;
 	}
 }
 void MessageBoard::UpdateAI(double dt)
@@ -65,6 +66,13 @@ void MessageBoard::UpdateAI(double dt)
 					break;
 			}
 		}
+		else
+		{
+			std::swap(enemies[i], enemies[enemies.size() - 1]);
+			delete enemies[enemies.size() - 1];
+			enemies[enemies.size() - 1] = NULL;
+			enemies.pop_back();
+		}
 	}
 	for (unsigned int i = 0; i < Allies.size(); ++i)
 	{
@@ -77,6 +85,13 @@ void MessageBoard::UpdateAI(double dt)
 				if (Allies[i]->SetTarget(enemies[a]))
 					break;
 			}
+		}
+		else
+		{
+			std::swap(Allies[i], Allies[Allies.size() - 1]);
+			delete Allies[Allies.size() - 1];
+			Allies[Allies.size() - 1] = NULL;
+			Allies.pop_back();
 		}
 	}
 }
@@ -155,10 +170,10 @@ void MessageBoard::RemoveMessage(Message* oldMessage)
 	{
 		if (messages[i] == oldMessage)
 		{
-			//((Enemy*)oldMessage->from)->pendingRequest = false;	//allows the enemy to send another help message
-			delete messages[i];		//remove the actual data
-			messages[i] = NULL;		//set the vector[i] to NULL so i can reuse
-			return;					//end the function if condition met
+			std::swap(messages[i], messages[messages.size() - 1]);
+			delete messages[messages.size() - 1];
+			messages[messages.size() - 1] = NULL;
+			messages.pop_back();
 		}
 	}
 }
@@ -186,7 +201,7 @@ void MessageBoard::AddEnemy(Enemy* enemy)
 				delete enemies[i];
 				enemies[i] = enemy;
 				EnemiesAlive++;
-				return;
+				break;
 			}
 		}
 	}
@@ -213,20 +228,22 @@ void MessageBoard::AddAlly(Ally* ally)
 		{
 			delete Allies[i];
 			Allies[i] = ally;
-			return;
+			break;
 		}
 	}
 	Allies.push_back(ally);
 }
-void MessageBoard::RemoveAlly(Ally*ally)
+void MessageBoard::RemoveAlly(Ally* ally)
 {
 	for (unsigned int i = 0; i < Allies.size(); ++i)
 	{
 		if (Allies[i] == ally)
 		{
-			Allies[i] = NULL;
-			delete ally;
-			return;
+			std::swap(Allies[i], Allies[Allies.size() - 1]);
+			delete Allies[Allies.size() - 1];
+			Allies[Allies.size() - 1] = NULL;
+			Allies.pop_back();
+			break;
 		}
 	}
 }
@@ -255,6 +272,7 @@ void MessageBoard::ClearAllAllies()
 	for (unsigned int i = 0; i < Allies.size(); ++i)
 	{
 		delete Allies[i];
+		Allies[i] = NULL;
 	}
 	Allies.clear();
 }
@@ -263,6 +281,7 @@ void MessageBoard::ClearAllEnemies()
 	for (unsigned int i = 0; i < enemies.size(); ++i)
 	{
 		delete enemies[i];
+		enemies[i] = NULL;
 	}
 	enemies.clear();
 }
